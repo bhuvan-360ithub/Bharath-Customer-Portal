@@ -7,6 +7,7 @@ import {
   TableCellsIcon,
   WrenchScrewdriverIcon,
   ShoppingCartIcon,
+  ShoppingBagIcon,
 } from '@heroicons/vue/24/outline';
 
 defineProps<{
@@ -20,7 +21,7 @@ const menuItems = [
   { name: 'Dashboard', icon: Squares2X2Icon, path: '/' },
   { name: 'Apps', icon: HomeIcon, path: '/login' },
   { name: 'Orders', icon: ShoppingCartIcon, path: '/orders' },
-  { name: 'UI Kits', icon: DocumentTextIcon, path: '/ui-kits' },
+  { name: 'Products', icon: ShoppingBagIcon, path: '/products' },
   { name: 'Components', icon: WrenchScrewdriverIcon, path: '/components' },
   { name: 'Tables', icon: TableCellsIcon, path: '/tables' },
 ];

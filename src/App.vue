@@ -40,14 +40,20 @@ const closeSidebar = () => {
       :is-collapsed="isCollapsed" 
       :is-mobile="isMobileMenuOpen"
       @close-sidebar="closeSidebar"
-      class="fixed lg:static z-30 transition-transform duration-300"
+      class="fixed top-0 left-0 h-full z-30 bg-white shadow-lg transition-all duration-300"
       :class="[
-        isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+        isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0',
+        isCollapsed ? 'w-[80px]' : 'w-[250px]'
       ]"
     />
 
-    <!-- Main Content Wrapper -->
-    <div class="flex-1 flex flex-col">
+    <!-- Main Content Wrapper (Adjusts padding when sidebar is collapsed) -->
+    <div 
+      class="flex-1 flex flex-col transition-all duration-300"
+      :class="[
+        isAuthPage ? 'pl-0' : isCollapsed ? 'lg:pl-[80px]' : 'lg:pl-[250px]' 
+      ]"
+    >
       <!-- Header (Only if not on login page) -->
       <Header v-if="!isAuthPage" :toggle-sidebar="toggleSidebar" :is-collapsed="isCollapsed" />
       

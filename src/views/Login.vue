@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col md:flex-row h-screen items-center justify-center">
+    <div class="flex flex-col md:flex-row h-screen items-center bg-white justify-center" @touchmove.prevent>
       <div class="w-full md:w-1/2 p-6 hidden md:block">
         <img src="/src/assets/login.png" alt="Login Image" class="w-full h-full rounded-lg object-cover" />
       </div>
@@ -103,7 +103,6 @@
         alert('Signing up...');
       },
       validateEmail() {
-        // Simple email validation
         const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         this.isLoginValid = emailRegex.test(this.email);
       },
@@ -112,10 +111,9 @@
         this.isSignupValid = emailRegex.test(this.signupEmail) && this.firstName && this.lastName && this.mobile.length === 10 && this.password.length > 0;
       },
       validateMobile(event) {
-        // Allow only numbers and ensure exactly 10 digits
-        const mobileRegex = /^[0-9]{0,10}$/; // Allow up to 10 digits
+        const mobileRegex = /^[0-9]{0,10}$/; // Limit to 10 digits
         if (!mobileRegex.test(this.mobile)) {
-          this.mobile = this.mobile.slice(0, 10); // Limit to 10 digits
+          this.mobile = this.mobile.replace(/[^0-9]/g, ''); // Remove non-numeric characters
         }
       }
     },
